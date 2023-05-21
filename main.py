@@ -55,7 +55,7 @@ app = FastAPI()
 
 
 @app.post("/")
-async def all_infers(sentence: str = Body(...)) -> None:
+async def all_infers(sentence: str = Body(...)) -> dict:
     """inference endpoint"""
     # create inference tasks per model
     tasks = [inference(sentence, model_name, model) for model_name, model in g_model_pipelines.items()]
