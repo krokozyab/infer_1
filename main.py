@@ -11,10 +11,10 @@ g_models = {"cardiffnlp": "cardiffnlp/twitter-xlm-roberta-base-sentiment",
             "EIStakovskii": "EIStakovskii/xlm_roberta_base_multilingual_toxicity_classifier_plus",
             "jy46604790": "jy46604790/Fake-News-Bert-Detect"}
 
-# dict model_name: pipeline
+# dict {model_name: pipeline}
 g_model_pipelines: dict = {}
 
-# dict returning API data
+# dict returning API data {model_name: {score:xx, label: xx} }
 g_data: dict = {}
 
 
@@ -55,7 +55,7 @@ app = FastAPI()
 
 
 @app.post("/")
-async def all_infers(sentence: str = Body(...)) -> None:
+async def all_infers(sentence: str = Body(...)) -> dict:
     """inference endpoint"""
     # create inference tasks per model
     tasks = [inference(sentence, model_name, model) for model_name, model in g_model_pipelines.items()]
