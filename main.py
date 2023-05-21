@@ -11,10 +11,10 @@ g_models = {"cardiffnlp": "cardiffnlp/twitter-xlm-roberta-base-sentiment",
             "EIStakovskii": "EIStakovskii/xlm_roberta_base_multilingual_toxicity_classifier_plus",
             "jy46604790": "jy46604790/Fake-News-Bert-Detect"}
 
-# dict model_name: pipeline
+# dict {model_name: pipeline}
 g_model_pipelines: dict = {}
 
-# dict returning API data
+# dict returning API data {model_name: {score:xx, label: xx} }
 g_data: dict = {}
 
 
